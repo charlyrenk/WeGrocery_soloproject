@@ -58,10 +58,10 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         item.itemStatus = itemStatus
         console.log(item.itemName, "'s status changed to ", item.itemStatus)
         console.log('item:', item)
+        console.log('updatedList: ', listObject)
         var data = {
             objectId: listObject._id,
-            item: item,
-            index: index
+            listObject: listObject
         }
         $http.put('/grocery', data).then(function(response){
             console.log('post response', response);

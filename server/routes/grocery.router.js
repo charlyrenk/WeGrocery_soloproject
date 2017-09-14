@@ -61,12 +61,19 @@ router.put('/', function (req, res) {
 
 
     Grocery.findByIdAndUpdate(id, {
-            $set: {
-                newGroceryList: req.body.item
-            }
+            $set:  req.body.listObject
+            
         },
-        res.sendStatus(200))
-});
+        function(err, data) {
+            if (err) {
+                console.log('update error: ', err);
+
+                res.sendStatus(500);
+            } else {
+                res.sendStatus(200);
+            }
+        }
+)});
 
 
 

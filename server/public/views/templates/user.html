@@ -52,8 +52,10 @@
                     Item Name: {{item.itemName}} {{$index}}
                     <br> Quantity: {{item.itemQuantity}}
                     <br> Notes: {{item.itemNotes}}
+                    Item Status: {{it-em.itemStatus}}
                     <input type="checkbox" ng-change = 'uc.changeItemStatus(list, item, uc.updatedGroceryList[$index].itemStatus, $index)'
-                    ng-model="uc.updatedGroceryList[$index].itemStatus">
+                    ng-model="uc.updatedGroceryList[$index].itemStatus"
+                    ng-checked = "{{item.itemStatus}} === true">
                 </div>
             </div>
             <div ng-repeat="item in list.newGroceryList">

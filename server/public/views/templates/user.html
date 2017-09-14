@@ -1,0 +1,70 @@
+<div class="container">
+
+    <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
+
+
+    <button class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
+
+    <form ng-show="showTheForm">
+        <md-input-container>
+            <label for="listName">Grocery List Name:</label>
+            <input type="text" ng-model="uc.listName" placeholder="Name your new list.">
+            <!-- ng-model="lc.user.tables" -->
+        </md-input-container>
+
+        <button class='addButton' ng-click="uc.addNewItem()">Add Grocery Item</button>
+        <div class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList track by $index">
+            <!-- <p>{{uc.newGroceryList[0]}}</p> -->
+            <label for="item">Grocery Item:</label>
+            <input type="text" ng-model="uc.newGroceryList[$index].itemName" itemName="" placeholder="Enter Item Name.">
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" ng-model="uc.newGroceryList[$index].itemQuantity" quantity="" placeholder="Enter a quantity.">
+
+            <label for="notes">Notes:</label>
+            <input type="text" ng-model="uc.newGroceryList[$index].itemNotes" itemNotes="" placeholder="Enter any additional information.npm ">
+
+            <button class="remove" ng-click="uc.removeItemInputRow(newGroceryList)">Remove</button>
+
+        </div>
+        <br>
+        <button ng-click="uc.sendNewList(uc.newGroceryList, uc.listName, uc.userObject)">Complete New List</button>
+        <button type="button" ng-click="showTheForm = false">Cancel</button>
+    </form>
+
+
+    <div id="userListContainer">
+        <h2>Your Lists</h2>
+        <div class="userLists" ng-repeat="list in uc.existingGroceryLists.list">
+            <div class="userListHeaders">
+                <h4>{{list.listName}}</h4>
+                <button class='addButton' 
+                ng-click="showTheList[item[$index]] = !showTheList[item[$index]]; editTheList[item[$index]]=false "
+                >See List
+            </button>
+                <button class='editButton' 
+                ng-click="editTheList[item[$index]] = ! editTheList[item[$index]]; showTheList[item[$index]] = false">Edit List
+            </button>
+            </div>
+
+            <div ng-repeat="item in list.newGroceryList">
+                <div ng-show="showTheList[item[$index]]">
+                    Item Name: {{item.itemName}} {{$index}}
+                    <br> Quantity: {{item.itemQuantity}}
+                    <br> Notes: {{item.itemNotes}}
+                    <input type="checkbox" ng-change = 'uc.changeItemStatus(list, item, uc.updatedGroceryList[$index].itemStatus, $index)'
+                    ng-model="uc.updatedGroceryList[$index].itemStatus">
+                </div>
+            </div>
+            <div ng-repeat="item in list.newGroceryList">
+                <div ng-show="editTheList[item[$index]]">
+                    Edit list
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
+</div>
+
+<div ng-include="'views/partials/nav.html'"></div>

@@ -16,6 +16,8 @@ myApp.controller('UserController', ['UserService', 'ListService', function(UserS
   vm.sendNewList = ListService.sendNewList;
   vm.changeItemStatus = ListService.changeItemStatus;
   vm.editList = ListService.editList;
+  vm.deleteList = ListService.deleteList;
 
-  ListService.getLists(vm.userObject);
+  //functions on page load
+  ListService.getLists();
 }]);

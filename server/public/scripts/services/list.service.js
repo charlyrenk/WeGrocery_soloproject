@@ -48,14 +48,16 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
 
         $http.post('/grocery', data).then(function (response) {
             console.log('Saved new grocery list!', response);
+            self.getLists()
+            location.reload()
         });
     }
 
     //retrievs users created lists
-    self.getLists = function (userObject) {
+    self.getLists = function () {
         $http.get('/grocery').then(function (response) {
             console.log('data:', response.data)
-            var userIdCheck = userObject.id
+            var userIdCheck = UserService.userObject.id
             console.log('user: ', userIdCheck)
             //used to authenticated user's id with the same id stored with the list from db
             for (var i = 0; i < response.data.length; i++) {
@@ -83,7 +85,7 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
             // $location.path('/user');
         });
     }
-    
+
     self.editList = function (listObject) {
 
         var data = {
@@ -93,6 +95,15 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         $http.put('/grocery', data).then(function (response) {
             console.log('post response', response);
             // $location.path('/user');
+        });
+    }
+
+    self.deleteList = function(listId){
+        
+        $http.delete('/grocery/' + listId).then(function (response) {
+            console.log('service delete response:', response);
+            self.getLists();
+            location.reload();
         });
     }
 }]);

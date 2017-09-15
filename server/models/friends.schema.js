@@ -1,11 +1,16 @@
 var mongoose = require('mongoose');
+var friends = require("mongoose-friends")
 var Schema = mongoose.Schema;
 
 var friendsSchema = new Schema({
-    
+    friends_list: {type: Array},
+    username: {type: String},
+    user_id: {type: String}
+
+
 },
 {
-    collection: 'grocery_list'
+    collection: 'friends'
 }
 );
-module.exports = mongoose.model('grocery_list', grocerySchema);
+module.exports = mongoose.model('friends', grocerySchema);

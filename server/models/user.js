@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
+var friends = require("mongoose-friends")
 
 // Mongoose Schema
 var UserSchema = new Schema({

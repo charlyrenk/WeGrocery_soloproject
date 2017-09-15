@@ -24,7 +24,7 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/addfriends', {
       templateUrl: '/views/templates/addfriends.html',
-      controller: 'InfoController',
+      controller: 'FriendsController as fc',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();

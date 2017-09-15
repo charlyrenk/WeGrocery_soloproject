@@ -19,6 +19,7 @@
     "express-session": "^1.13.0",
     "jquery": "^2.1.4",
     "mongoose": "^4.4.6",
+    "mongoose-friends": "^0.2.5",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "path": "^0.11.14"

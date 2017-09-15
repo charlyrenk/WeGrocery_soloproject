@@ -8,30 +8,30 @@
     <form ng-show="showTheForm">
         <md-input-container>
             <label for="listName">Grocery List Name:</label>
-            <input type="text" ng-model="uc.listName" placeholder="Name your new list.">
+            <input type="text" ng-model="listName" placeholder="Name your new list.">
             <!-- ng-model="lc.user.tables" -->
         </md-input-container>
 
         <button class='addButton' ng-click="uc.addNewItem()">Add Grocery Item</button>
-        <div class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList track by $index">
-            <!-- <p>{{uc.newGroceryList[0]}}</p> -->
-            <label for="item">Grocery Item:</label>
-            <input type="text" ng-model="uc.newGroceryList[$index].itemName" itemName="" placeholder="Enter Item Name.">
+        <div class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList">
+            <p>{{uc.newGroceryItems.newGroceryList}} </p>
+            <label for="item">Grocery Item: </label>
+            <!-- item[$index].itemName -->
+            <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName"  placeholder="Enter Item Name.">
 
             <label for="quantity">Quantity:</label>
-            <input type="number" ng-model="uc.newGroceryList[$index].itemQuantity" quantity="" placeholder="Enter a quantity.">
+            <input type="number" ng-model="uc.newGroceryItems.newGroceryList[$index].itemQuantity"  placeholder="Enter a quantity.">
 
             <label for="notes">Notes:</label>
-            <input type="text" ng-model="uc.newGroceryList[$index].itemNotes" itemNotes="" placeholder="Enter any additional information.npm ">
+            <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemNotes"  placeholder="Enter any additional information.npm ">
 
-            <button class="remove" ng-click="uc.removeItemInputRow(newGroceryList)">Remove</button>
+            <button class="remove" ng-click="uc.removeItemInputRow($index)">Remove</button>
 
         </div>
         <br>
-        <button ng-click="uc.sendNewList(uc.newGroceryList, uc.listName, uc.userObject)">Complete New List</button>
+        <button ng-click="uc.sendNewList(uc.newGroceryItems.newGroceryList, listName, uc.userObject)">Complete New List</button>
         <button type="button" ng-click="showTheForm = false">Cancel</button>
     </form>
-
 
     <div id="userListContainer">
         <h2>Your Lists</h2>
@@ -52,15 +52,26 @@
                     Item Name: {{item.itemName}} {{$index}}
                     <br> Quantity: {{item.itemQuantity}}
                     <br> Notes: {{item.itemNotes}}
-                    Item Status: {{it-em.itemStatus}}
-                    <input type="checkbox" ng-change = 'uc.changeItemStatus(list, item, uc.updatedGroceryList[$index].itemStatus, $index)'
+                    Item Status: {{item.itemStatus}}
+                    <input type="checkbox" ng-change = 'uc.changeItemStatus(list, item, uc.updatedGroceryList[$index].itemStatus)'
                     ng-model="uc.updatedGroceryList[$index].itemStatus"
                     ng-checked = "{{item.itemStatus}} === true">
                 </div>
             </div>
             <div ng-repeat="item in list.newGroceryList">
                 <div ng-show="editTheList[item[$index]]">
-                    Edit list
+                    <form>
+                    <label for="item">Grocery Item: {{item.itemName}}</label>
+                    <input type="text" ng-model= 'uc.updatedGroceryList[$index].itemName' placeholder="{{item.itemName}}"> 
+                    <!-- ng-model="uc.editGroceryList[$index].itemName"> -->
+        
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" ng-model="uc.editGroceryList[$index].itemQuantity" placeholder="Enter a quantity.">
+        
+                    <label for="notes">Notes:</label>
+                    <input type="text" ng-model="uc.editGroceryList[$index].itemNotes"  placeholder="Enter any additional information.npm ">
+                    
+                    </form>
                 </div>
             </div>
         </div>

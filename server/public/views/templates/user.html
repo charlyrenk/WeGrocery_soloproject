@@ -44,34 +44,34 @@
                 </button>
                 <button class='editButton' ng-click="editTheList[item[$index]] = ! editTheList[item[$index]]; showTheList[item[$index]] = false">Edit List
                 <button class= 'remove' ng-click = "uc.deleteList(list._id)">Delete List</button>
-            </button>
+                </button>
             </div>
 
-            <div ng-repeat="item in list.newGroceryList">
-                <div ng-show="showTheList[item[$index]]">
-                    Item Name: {{item.itemName}} {{$index}}
+            <div ng-repeat="item in list.newGroceryList" ng-show="showTheList[item[$index]]">
+
+                <p>Item Name: {{item.itemName}} {{$index}}
                     <br> Quantity: {{item.itemQuantity}}
                     <br> Notes: {{item.itemNotes}} Item Status: {{item.itemStatus}}
                     <input type="checkbox" ng-change='uc.changeItemStatus(list, item, uc.updatedGroceryList[$index].itemStatus)' ng-model="uc.updatedGroceryList[$index].itemStatus"
                         ng-checked="{{item.itemStatus}} === true">
-                </div>
+                </p>
+
             </div>
-            <div ng-repeat="item in list.newGroceryList">
-                <div ng-show="editTheList[item[$index]]">
-                
-                        <label for="item">Grocery Item: {{item.itemName}}</label>
-                        <input type="text" ng-model='item.itemName'>
-                        <!-- ng-model="uc.editGroceryList[$index].itemName"> -->
+            <div ng-show="editTheList[item[$index]]">
+                <div ng-repeat="item in list.newGroceryList">
+                    <label for="item">Grocery Item: {{item.itemName}}</label>
+                    <input type="text" ng-model='item.itemName'>
+                    <!-- ng-model="uc.editGroceryList[$index].itemName"> -->
 
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" ng-model="item.itemQuantity">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" ng-model="item.itemQuantity">
 
-                        <label for="notes">Notes:</label>
-                        <input type="text" ng-model="item.itemNotes">
+                    <label for="notes">Notes:</label>
+                    <input type="text" ng-model="item.itemNotes">
 
-                        <button class="remove">Remove</button>
-                    
+                    <button class="remove">Remove</button>
                 </div>
+                <button ng-click = "uc.updateList(list)">Update List</button>
             </div>
         </div>
     </div>

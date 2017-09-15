@@ -106,4 +106,17 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
             location.reload();
         });
     }
+
+    self.updateList = function (listObject) {
+        console.log('List to update: ', listObject)
+        var data = {
+            objectId: listObject._id,
+            listObject: listObject
+        }
+        $http.put('/grocery', data).then(function (response) {
+            console.log('post response', response);
+            self.getLists();
+            location.reload();
+        });
+    }
 }]);

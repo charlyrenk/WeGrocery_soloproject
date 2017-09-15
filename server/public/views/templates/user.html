@@ -38,7 +38,6 @@
         <div class="userLists" ng-repeat="list in uc.existingGroceryLists.list">
 
             <div class="userListHeaders">
-                {{list}}
                 <h4>{{list.listName}}</h4>
                 <button class='addButton' ng-click="showTheList[item[$index]] = !showTheList[item[$index]]; editTheList[item[$index]]=false ">See List
                 </button>
@@ -69,9 +68,10 @@
                     <label for="notes">Notes:</label>
                     <input type="text" ng-model="item.itemNotes">
 
-                    <button class="remove">Remove</button>
+                    <!-- this button is a stretch goal -->
+                    <!-- <button class="remove" ng-click="uc.removeItem(list,$index)">Remove</button> -->
                 </div>
-                <button ng-click = "uc.updateList(list)">Update List</button>
+                <button ng-click="uc.updateList(list)">Update List</button>
             </div>
         </div>
     </div>

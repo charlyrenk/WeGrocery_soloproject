@@ -18,6 +18,7 @@ myApp.controller('UserController', ['UserService', 'ListService', function(UserS
   vm.editList = ListService.editList;
   vm.deleteList = ListService.deleteList;
   vm.updateList = ListService.updateList;
+  vm.removeItem = ListService.removeItem;
 
   //functions on page load
   ListService.getLists();

@@ -87,10 +87,16 @@ li a:hover {
 }
 .addButton{
   background-color: skyblue;
+  color: white;
 }
 .editButton{
   background-color: orange;
+  color: white;
 }
 .listInputs{
  float: left;
+}
+.remove{
+  background-color: #C73030;
+  color: white;
 }

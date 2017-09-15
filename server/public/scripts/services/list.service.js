@@ -119,4 +119,12 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
             location.reload();
         });
     }
+    //this function is a stretch goal
+    self.removeItem = function (list, index) {
+        console.log('removeItemInputRow button clicked.')
+        console.log('list:', list, 'index: ', index)
+
+       list.newGroceryList.splice(index, 1);
+
+    }
 }]);

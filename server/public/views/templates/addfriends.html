@@ -5,6 +5,17 @@
     <p>{{user.username}}</p>
     <button ng-click = "fc.sendFriendRequest(user.user_id, fc.currentUser)">Send Friend Request</button> 
   </div>
+  <h1>All requests</h1>
+  <div ng-repeat= "request in fc.allRequests">
+    <div ng-repeat = "user in request">
+      {{user}}
+      <p>{{user.userName}}</p>
+    </div>
+     
+    
+    </div>
+
 </div>
+
 
 <div ng-include="'views/partials/nav.html'"></div>

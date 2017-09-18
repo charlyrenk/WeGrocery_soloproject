@@ -2,9 +2,12 @@ myApp.controller('FriendsController', ['UserService', 'ListService', 'FriendsSer
     console.log('FriendsController created');
     var vm = this;
     vm.currentUser = UserService.userObject
+    vm.currentUserId = UserService.userObject.id
 
     vm.allUsers = FriendsService.allUsers.list;
+    vm.allRequests = FriendsService.allRequests.list
     vm.sendFriendRequest = FriendsService.sendFriendRequest;
     
     FriendsService.getAllUsers();
+    FriendsService.getAllRequests();
 }]);

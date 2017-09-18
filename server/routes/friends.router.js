@@ -14,6 +14,17 @@ router.get('/allUsers', function (req, res) {
         }
     });
 })
+router.get('/allRequests', function (req, res) {
+    User.find({}, function (err, data) {
+        if (err) {
+            console.log('find error: ', err);
+            res.sendStatus(500);
+        } else {
+            console.log('found data: ', data);
+            res.send(data);
+        }
+    });
+})
 
 router.post('/', function (req, res) {
     var userToAdd = req.body.userToAdd

@@ -35,7 +35,7 @@ app.use(passport.session());
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
 app.use('/grocery', groceryRouter);
-app.use('/friends', friendsRouter)
+app.use('/friends', friendsRouter);
 
 
 // Catch all bucket, must be last!

@@ -61,10 +61,10 @@ router.put('/', function (req, res) {
 
 
     Grocery.findByIdAndUpdate(id, {
-            $set:  req.body.listObject
-            
+            $set: req.body.listObject
+
         },
-        function(err, data) {
+        function (err, data) {
             if (err) {
                 console.log('update error: ', err);
 
@@ -73,12 +73,14 @@ router.put('/', function (req, res) {
                 res.sendStatus(200);
             }
         }
-)});
+    )
+});
 
-router.delete('/:id', function(req, res) {
-    Grocery.findByIdAndRemove(
-        { _id: req.params.id },
-        function(err, data) {
+router.delete('/:id', function (req, res) {
+    Grocery.findByIdAndRemove({
+            _id: req.params.id
+        },
+        function (err, data) {
             if (err) {
                 console.log('delete error: ', err);
 

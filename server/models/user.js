@@ -4,10 +4,13 @@ var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 var friends = require("mongoose-friends")
 
+
 // Mongoose Schema
 var UserSchema = new Schema({
     username: {type: String, required: true, index: {unique: true}},
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    pendingFriendRequests: {type: Array},
+    friendsList: {type: Array}
 });
 
 // Called before adding a new user to the DB. Encrypts password.
@@ -45,6 +48,7 @@ UserSchema.methods.comparePassword = function(candidatePassword, callback) {
         callback(null, isMatch);
     });
 };
+
 
 
 module.exports = mongoose.model('User', UserSchema);

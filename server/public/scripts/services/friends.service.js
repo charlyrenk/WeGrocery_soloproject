@@ -56,5 +56,18 @@ myApp.service('FriendsService', ['$http', '$location', 'UserService', function (
         });
     }
 
+    self.acceptFriendRequest = function (userToAdd, currentUser) {
+        console.log("friend acceptance of:", userToAdd)
+        console.log("friend accepted by:", currentUser)
+        // var data = {
+        //     userToAdd: userToAdd,
+        //     currentUser: currentUser
+        // }
+        // $http.post('/friends', data).then(function (response) {
+        //     console.log('post response', response);
+        //     // $location.path('/user');
+        // });
+    }
+
 
 }]);

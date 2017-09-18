@@ -6,7 +6,7 @@ myApp.service('FriendsService', ['$http', '$location', 'UserService', function (
     }
 
     self.getAllUsers = function () {
-        $http.get('/friends').then(function (response) {
+        $http.get('/friends/allUsers').then(function (response) {
             // self.allUsers.list = response.data;
             for (var i = 0; i < response.data.length; i++) {
                 var userObject = {
@@ -19,6 +19,8 @@ myApp.service('FriendsService', ['$http', '$location', 'UserService', function (
             console.log('All users :', self.allUsers.list);
         })
     }
+
+    self.
 
     self.sendFriendRequest = function (userToAdd, currentUser) {
         console.log("friend request sent to:", userToAdd)

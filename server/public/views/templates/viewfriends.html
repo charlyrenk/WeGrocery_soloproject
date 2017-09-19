@@ -1,8 +1,14 @@
 <h1>Friends' Lists</h1>
-{{dc.userObject}}
+{{dc.thisFriendsList}}
+
 <div ng-repeat="friend in dc.userObject.friendsList">
     <p>{{friend.userName}}</p>
     <button ng-click="dc.getThisFriendsLists(friend)">View Lists</button>
     
 </div>
+<div ng-repeat="list in dc.thisFriendsList.list">
+        {{list}}
+</div>
+
+
 <div ng-include="'views/partials/nav.html'"></div>

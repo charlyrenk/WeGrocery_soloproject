@@ -2,7 +2,7 @@ myApp.controller('DisplayFriendsController', ['UserService', 'DisplayFriendsServ
     console.log('DisplayFriendsController loaded');
     var vm = this;
 
-    vm.getThisFriendsLists = DisplayFriendsService.getThisFriendsLists
+    vm.thisFriendsList = DisplayFriendsService.thisFriendsList;
 
     vm.userObject = UserService.userObject;
     vm.getThisFriendsLists = DisplayFriendsService.getThisFriendsLists;

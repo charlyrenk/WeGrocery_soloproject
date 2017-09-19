@@ -55,7 +55,14 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
 
     //retrievs users created lists
     self.getLists = function () {
+        
+        if(self.existingGroceryLists.list.length > 0){
+            self.existingGroceryLists = {
+            list: []
+        }}
+
         $http.get('/grocery').then(function (response) {
+
             console.log('data:', response.data)
             var userIdCheck = UserService.userObject.id
             console.log('user: ', userIdCheck)

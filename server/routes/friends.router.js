@@ -26,13 +26,45 @@ router.get('/allRequests', function (req, res) {
     });
 })
 
-router.post('/', function (req, res) {
+router.post('/sendRequest', function (req, res) {
     var userToAdd = req.body.userToAdd
     var currentUser = req.body.currentUser
     console.log('Friend post initiated:', userToAdd, currentUser)
     User.findByIdAndUpdate(userToAdd, {
             $push: {
                 pendingFriendRequests: currentUser
+            }
+        },
+        function (err, data) {
+            if (err) {
+                console.log('update error: ', err);
+
+                res.sendStatus(500);
+            } else {
+                res.sendStatus(200);
+            }
+        }
+    )
+})
+
+router.post('/acceptRequest', function (req, res) {
+    var userToAdd = req.body.userToAdd
+    var otherUserId = req.body.userToAdd.id
+    var currentUser = req.body.currentUser
+    var currentUserId = req.body.currentUser.id
+    
+    console.log('Friend post initiated:', userToAdd, currentUserId)
+
+    User.findByIdAndUpdate(otherUserId, {
+        $set: {
+            pendingFriendRequests:  currentUser
+            
+        }
+    })
+
+    User.findByIdAndUpdate(currentUserId, {
+            $push: {
+                friendsList: userToAdd
             }
         },
         function (err, data) {

@@ -11,7 +11,7 @@
     <div ng-repeat="user in request">
       {{user}}
       <p>{{user.userName}}</p>
-      <button ng-click= "fc.acceptFriendRequest(user, fc.currentUser, fc.allRequests)">Accept Request</button>
+      <button ng-click= "fc.acceptFriendRequest(user, fc.currentUser); user.friendRequestStatus = true">Accept Request</button>
     </div>
 
 

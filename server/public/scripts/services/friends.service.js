@@ -55,8 +55,7 @@ myApp.service('FriendsService', ['$http', '$location', 'UserService', function (
         console.log("friend request send by:", currentUser)
         var data = {
             userToAdd: userToAdd,
-            currentUser: currentUser,
-            allRequestsObject: allRequestsObject
+            currentUser: currentUser
         }
         $http.post('/friends/sendRequest', data).then(function (response) {
             console.log('post response', response);
@@ -64,15 +63,16 @@ myApp.service('FriendsService', ['$http', '$location', 'UserService', function (
         });
     }
 
-    self.acceptFriendRequest = function (userToAdd, currentUser, allRequestsObject) {
-        User
+    self.acceptFriendRequest = function (userToAdd, currentUser) {
+        userToAdd.friendRequestStatus = true
         console.log("friend acceptance of:", userToAdd)
         console.log("friend accepted by:", currentUser)
         var data = {
             userToAdd: userToAdd,
             currentUser: currentUser,
-            allRequestsObject: allRequestsObject
+            allRequestsObject: self.allRequests.list[0]
         }
+        console.log("new allRequest object:", self.allRequests.list[0])
         $http.post('/friends/acceptRequest', data).then(function (response) {
             console.log('post response', response);
             // $location.path('/user');

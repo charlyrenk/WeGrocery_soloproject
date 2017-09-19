@@ -52,15 +52,27 @@ router.post('/acceptRequest', function (req, res) {
     var otherUserId = req.body.userToAdd.id
     var currentUser = req.body.currentUser
     var currentUserId = req.body.currentUser.id
+    var allRequestsObject = req.body.allRequestsObject
     
     console.log('Friend post initiated:', userToAdd, currentUserId)
 
-    User.findByIdAndUpdate(otherUserId, {
-        $set: {
-            pendingFriendRequests:  currentUser
-            
-        }
-    })
+    // User.findByIdAndUpdate(currentUserId, {
+    //     $set: userToAdd
+        
+    // })
+    User.findById(currentUserId, function (err, user) {
+        if (err) return handleError(err);
+        
+        //console.log('Basket Index server: ', user.basket[basketIndex].quantity)
+        user.pendingFriendRequests = allRequestsObject //$inc
+        user.save(function (err) {
+          if (err) { 
+            return handleError(err) 
+          };
+        });
+      });
+
+  
 
     User.findByIdAndUpdate(currentUserId, {
             $push: {

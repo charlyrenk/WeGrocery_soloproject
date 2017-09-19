@@ -1,4 +1,4 @@
-myApp.controller('DisplayFriendsController', ['UserService', 'DisplayFriendsService', function(UserService, DisplayFriendsService) {
+myApp.controller('DisplayFriendsController', ['UserService', 'DisplayFriendsService', 'ListService', function(UserService, DisplayFriendsService, ListService) {
     console.log('DisplayFriendsController loaded');
     var vm = this;
 
@@ -6,6 +6,7 @@ myApp.controller('DisplayFriendsController', ['UserService', 'DisplayFriendsServ
 
     vm.userObject = UserService.userObject;
     vm.getThisFriendsLists = DisplayFriendsService.getThisFriendsLists;
+    vm.changeItemStatus = ListService.changeItemStatus;
 
    
 }]);

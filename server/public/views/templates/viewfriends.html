@@ -1,13 +1,27 @@
 <h1>Friends' Lists</h1>
-{{dc.thisFriendsList}}
+
 
 <div ng-repeat="friend in dc.userObject.friendsList">
     <p>{{friend.userName}}</p>
     <button ng-click="dc.getThisFriendsLists(friend)">View Lists</button>
-    
+
 </div>
 <div ng-repeat="list in dc.thisFriendsList.list">
-        {{list}}
+    <div class="userListHeaders">
+        <h4>{{list.listName}}</h4>
+        <button class='addButton' ng-click="showTheList[item[$index]] = !showTheList[item[$index]]; editTheList[item[$index]]=false ">See List
+                </button>
+        <button class='editButton' ng-click="editTheList[item[$index]] = ! editTheList[item[$index]]; showTheList[item[$index]] = false">Edit List
+    </div>
+    <div ng-repeat="item in list.newGroceryList" ng-show="showTheList[item[$index]]">   
+        <p>Item Name: {{item.itemName}} {{$index}}
+        <br> Quantity: {{item.itemQuantity}}
+        <br> Notes: {{item.itemNotes}} Item Status: {{item.itemStatus}}
+        <input type="checkbox" ng-change='dc.changeItemStatus(list, item, dc.updatedGroceryList[$index].itemStatus)' ng-model="dc.updatedGroceryList[$index].itemStatus"
+        ng-checked="{{item.itemStatus}} === true">
+        </p>  
+    </div>
+    
 </div>
 
 

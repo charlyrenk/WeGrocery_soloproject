@@ -1,4 +1,4 @@
-myApp.controller('FriendsController', ['UserService', 'ListService', 'FriendsService', function(UserService, ListService, FriendsService) {
+myApp.controller('FriendsController', ['UserService', 'FriendsService', function(UserService, FriendsService) {
     console.log('FriendsController created');
     var vm = this;
     vm.currentUser = UserService.userObject

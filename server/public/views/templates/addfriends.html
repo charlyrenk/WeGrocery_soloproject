@@ -8,7 +8,7 @@
   </div>
   <h1>All requests</h1>
   <div ng-repeat="request in fc.allRequests">
-    <div ng-repeat="user in request">
+    <div ng-repeat="user in request" ng-if="user.friendRequestStatus === false">
       {{user}}
       <p>{{user.userName}}</p>
       <button ng-click= "fc.acceptFriendRequest(user, fc.currentUser); user.friendRequestStatus = true">Accept Request</button>

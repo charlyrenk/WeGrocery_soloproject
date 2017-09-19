@@ -16,9 +16,11 @@ myApp.service('FriendsService', ['$http', '$location', 'UserService', function (
             }
         }
         $http.get('/friends/allUsers').then(function (response) {
+
+            var userIdCheck = UserService.userObject.id
             // self.allUsers.list = response.data;
             for (var i = 0; i < response.data.length; i++) {
-                if ((response.data[i]._id != userIdCheck)) {
+                if (response.data[i]._id != userIdCheck) {
                     var userObject = {
                         user_id: response.data[i]._id,
                         username: response.data[i].username
@@ -39,7 +41,7 @@ myApp.service('FriendsService', ['$http', '$location', 'UserService', function (
         $http.get('/friends/allRequests').then(function (response) {
 
             for (var i = 0; i < response.data.length; i++) {
-                if ((response.data[i]._id === userIdCheck)) {
+                if (response.data[i]._id === userIdCheck){// && response.data[i].friendRequestStatus == false) {
                     self.allRequests.list.push(response.data[i].pendingFriendRequests)
                 }
             }
@@ -50,7 +52,8 @@ myApp.service('FriendsService', ['$http', '$location', 'UserService', function (
     }
 
     self.sendFriendRequest = function (userToAdd, currentUser) {
-          currentUser.friendRequestStatus = false;
+        
+        currentUser.friendRequestStatus = false;
         console.log("friend request sent to:", userToAdd)
         console.log("friend request send by:", currentUser)
         var data = {

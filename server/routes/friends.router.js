@@ -36,7 +36,7 @@ router.get('/allRequests', function (req, res) {
 })
 
 router.post('/sendRequest', function (req, res) {
-    var userToAddId = req.body.userToAdd.user_id
+    var userToAddId = req.body.userToAdd._id
     var userToAdd = req.body.userToAdd
     var currentUser = req.body.currentUser
     var currentUserId = req.body.currentUser.id

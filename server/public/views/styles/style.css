@@ -25,7 +25,13 @@ body, html {
   width:100vh
   
 }
-
+#footer { 
+  height: 40px; 
+  position: fixed; 
+  bottom:1%;
+  width:100%; 
+  opacity: 1;
+}
 .container p{
   margin-top : 14px;
 }

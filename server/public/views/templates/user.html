@@ -98,18 +98,15 @@
                    </td>
                    
                 </tr>
-                <button ng-click="uc.updateList(list)">Update List</button>
+                <button ng-show="editTheList[item[$index]]" ng-click="uc.updateList(list)">Update List</button>
 
                     <!-- this button is a stretch goal -->
                     <!-- <button class="remove" ng-click="uc.removeItem(list,$index)">Remove</button> -->
             </table>
-            
         </div>
     </div>
-
-    <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
-    
 </div>
 
-<div ng-include="'views/partials/nav.html'"></div>
+<div id = "footer" ng-include="'views/partials/nav.html'"></div>
+
 

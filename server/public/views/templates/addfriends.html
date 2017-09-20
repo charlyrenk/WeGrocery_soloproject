@@ -1,13 +1,14 @@
 <div class="container">
   <h1>Add Friends</h1>
   {{fc.currentUser}}
-  <div ng-repeat="user in fc.allUsers">
+  
+  <div ng-repeat="user in fc.allUsers.list">
     <p>{{user.username}}</p>
-    <button ng-click="fc.sendFriendRequest(user.user_id, fc.currentUser)">Send Friend Request</button> 
+    <button ng-click="fc.sendFriendRequest(user, fc.currentUser)">Send Friend Request</button> 
 
   </div>
   <h1>All requests</h1>
-  <div ng-repeat="request in fc.allRequests">
+  <div ng-repeat="request in fc.allRequests.list">
     <div ng-repeat="user in request" ng-if="user.friendRequestStatus === false">
       {{user}}
       <p>{{user.userName}}</p>

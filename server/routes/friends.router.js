@@ -4,16 +4,25 @@ var router = express.Router();
 var Grocery = require('../models/grocery.schema.js')
 var User = require('../models/user.js')
 router.get('/allUsers', function (req, res) {
-    User.find({}, function (err, data) {
-        if (err) {
-            console.log('find error: ', err);
-            res.sendStatus(500);
-        } else {
-            console.log('found data: ', data);
-            res.send(data);
+    if (req.isAuthenticated()) {
+        let friendsList = req.user.friendsList
+        let friendIdList = []
+        for (var i = 0; i < friendsList.length; i ++){
+            friendIdList.push(friendsList[i].id)
         }
-    });
+        friendIdList.push(req.user._id)
+        User.find({_id: { "$nin": friendIdList } }, function (err, data) {
+            if (err) {
+                console.log('find error: ', err);
+                res.sendStatus(500);
+            } else {
+                console.log('found data: ', data);
+                res.send(data);
+            }
+        });
+    }
 })
+
 router.get('/allRequests', function (req, res) {
     User.find({}, function (err, data) {
         if (err) {
@@ -27,10 +36,13 @@ router.get('/allRequests', function (req, res) {
 })
 
 router.post('/sendRequest', function (req, res) {
+    var userToAddId = req.body.userToAdd.user_id
     var userToAdd = req.body.userToAdd
     var currentUser = req.body.currentUser
-    console.log('Friend post initiated:', userToAdd, currentUser)
-    User.findByIdAndUpdate(userToAdd, {
+    var currentUserId = req.body.currentUser.id
+
+    console.log('Friend post initiated:', userToAddId, currentUser)
+    User.findByIdAndUpdate(userToAddId, {
             $push: {
                 pendingFriendRequests: currentUser
             }
@@ -41,10 +53,11 @@ router.post('/sendRequest', function (req, res) {
 
                 res.sendStatus(500);
             } else {
-                res.sendStatus(200);
+                console.log("userToAdd found")
             }
         }
     )
+
 })
 
 router.post('/acceptRequest', function (req, res) {
@@ -93,11 +106,11 @@ router.post('/acceptRequest', function (req, res) {
 
     User.findByIdAndUpdate(otherUserId, {
             $push: {
-                    friendsList: {
-                        id: currentUserId,
-                        userName: currentUser.userName
-                    }
+                friendsList: {
+                    id: currentUserId,
+                    userName: currentUser.userName
                 }
+            }
         },
         function (err, data) {
             if (err) {
@@ -110,4 +123,6 @@ router.post('/acceptRequest', function (req, res) {
         }
     )
 })
+
+
 module.exports = router;

@@ -4,8 +4,8 @@ myApp.controller('FriendsController', ['UserService', 'FriendsService', function
     vm.currentUser = UserService.userObject
     vm.currentUserId = UserService.userObject.id
 
-    vm.allUsers = FriendsService.allUsers.list;
-    vm.allRequests = FriendsService.allRequests.list
+    vm.allUsers = FriendsService.allUsers;
+    vm.allRequests = FriendsService.allRequests
     vm.sendFriendRequest = FriendsService.sendFriendRequest;
     vm.acceptFriendRequest = FriendsService.acceptFriendRequest;
     

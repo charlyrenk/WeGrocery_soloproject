@@ -6,29 +6,40 @@
     <button class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
 
     <form ng-show="showTheForm">
-        <md-input-container>
+    
             <label for="listName">Grocery List Name:</label>
             <input type="text" ng-model="listName" placeholder="Name your new list.">
             <!-- ng-model="lc.user.tables" -->
-        </md-input-container>
-
-        <button class='addButton' ng-click="uc.addNewItem()">Add Grocery Item</button>
-        <div class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList">
-            <p>{{uc.newGroceryItems.newGroceryList}} </p>
-            <label for="item">Grocery Item: </label>
-            <!-- item[$index].itemName -->
-            <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Enter Item Name.">
-
-            <label for="quantity">Quantity:</label>
-            <input type="number" ng-model="uc.newGroceryItems.newGroceryList[$index].itemQuantity" placeholder="Enter a quantity.">
-
-            <label for="notes">Notes:</label>
-            <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemNotes" placeholder="Enter any additional information.npm ">
-
-            <button class="remove" ng-click="uc.removeItemInputRow($index)">Remove</button>
-
-        </div>
         <br>
+        <button class='addButton' ng-click="uc.addNewItem()">Add Grocery Item</button>
+        <table>
+            <tr>
+                <th>Grocery Item</th>
+                <th>Quantity</th>
+                <th>Notes</th>
+                <th></th>
+            </tr>
+
+            <tr class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList">
+                <!-- item[$index].itemName -->
+                <td>
+                <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Enter Item Name.">
+                </td>
+
+                <td>
+                <input type="number" ng-model="uc.newGroceryItems.newGroceryList[$index].itemQuantity" placeholder="Enter a quantity.">
+                </td>
+
+                <td>
+                <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemNotes" placeholder="Enter any additional information.npm ">
+                </td>
+
+                <td>
+                <button class="remove" ng-click="uc.removeItemInputRow($index)">Remove</button>
+                </td>
+
+            </tr>
+        </table>
         <button ng-click="uc.sendNewList(uc.newGroceryItems.newGroceryList, listName, uc.userObject)">Complete New List</button>
         <button type="button" ng-click="showTheForm = false">Cancel</button>
     </form>
@@ -51,8 +62,7 @@
                 <p>Item Name: {{item.itemName}} {{$index}}
                     <br> Quantity: {{item.itemQuantity}}
                     <br> Notes: {{item.itemNotes}} Item Status: {{item.itemStatus}}
-                    <input type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus"
-                        ng-checked="{{item.itemStatus}} === true">
+                    <input type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus" ng-checked="{{item.itemStatus}} === true">
                 </p>
 
             </div>

@@ -21,7 +21,8 @@ body, html {
 }
 
 #container {
-  margin-top: 10px;
+  height: 100vw;
+  width:100vh
   
 }
 

@@ -1,6 +1,6 @@
-<div class="container" >
+<div class="container" flex layout-fill>
 
-    <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
+    <h1 id="welcome" class="lead">Welcome back, {{uc.userObject.userName}}!</h1>
 
 
     <button  class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
@@ -44,7 +44,7 @@
         <button type="button" ng-click="showTheForm = false">Cancel</button>
     </form>
 
-    <div id="userListContainer">
+    <div  id="userListContainer">
         <h2>Your Lists</h2>
         <div class="userLists" ng-repeat="list in uc.existingGroceryLists.list">
 
@@ -98,15 +98,17 @@
                    </td>
                    
                 </tr>
+                <button ng-click="uc.updateList(list)">Update List</button>
 
                     <!-- this button is a stretch goal -->
                     <!-- <button class="remove" ng-click="uc.removeItem(list,$index)">Remove</button> -->
             </table>
-            <button ng-click="uc.updateList(list)">Update List</button>
+            
         </div>
     </div>
 
     <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
+    
 </div>
 
 <div ng-include="'views/partials/nav.html'"></div>

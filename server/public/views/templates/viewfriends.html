@@ -1,9 +1,11 @@
+<div class="container">
 <h1>Friends' Lists</h1>
 
 
 <div ng-repeat="friend in dc.userObject.friendsList">
-    <p>{{friend.userName}}</p>
-    <button ng-click="dc.getThisFriendsLists(friend)">View Lists</button>
+    <div >{{friend.userName}}
+        <button ng-click="dc.getThisFriendsLists(friend)">View Lists</button>
+    </div>
 
 </div>
 <div ng-repeat="list in dc.thisFriendsList.list">
@@ -11,15 +13,25 @@
         <h4>{{list.listName}}</h4>
         <button class='addButton' ng-click="showTheList[item[$index]] = !showTheList[item[$index]]">See List</button>
     </div>
-    <div ng-repeat="item in list.newGroceryList" ng-show="showTheList[item[$index]]">
-        <p>Item Name: {{item.itemName}} {{$index}}
-            <br> Quantity: {{item.itemQuantity}}
-            <br> Notes: {{item.itemNotes}} Item Status: {{item.itemStatus}}
-            <input type="checkbox" ng-change='dc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus" ng-checked="item.itemStatus === true">
-        </p>
-    </div>
+    <table ng-show="showTheList[item[$index]]">
+        <tr>
+            <th>Grocery Item</th>
+            <th>Quantity</th>
+            <th>Notes</th>
+            <th>Obtained</th>
+        </tr>
+        <tr ng-repeat="item in list.newGroceryList">
+
+            <td>{{item.itemName}}</td>
+            <td> {{item.itemQuantity}}</td>
+            <td>{{item.itemNotes}}</td>
+            <td>
+                <input type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus" ng-checked="{{item.itemStatus}} === true">
+            </td>
+        </tr>
+    </table>
 
 </div>
 
-
 <div ng-include="'views/partials/nav.html'"></div>
+</div>

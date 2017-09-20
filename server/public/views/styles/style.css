@@ -22,6 +22,7 @@ body, html {
 
 #container {
   margin-top: 10px;
+  
 }
 
 .container p{
@@ -99,4 +100,22 @@ li a:hover {
 .remove{
   background-color: #C73030;
   color: white;
+}
+input[type="text"] {
+  width: 100%; 
+  box-sizing: border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing: border-box;
+}
+input[type="password"] {
+  width: 100%; 
+  box-sizing: border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing: border-box;
+}
+input[type="number"] {
+  width: 100%; 
+  box-sizing: border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing: border-box;
 }

@@ -1,9 +1,8 @@
-<div class="container">
-  <h1>Add Friends</h1>
-  {{fc.currentUser}}
+<div class="container"  >
+  <h1 layout="row" layout-align="center center">Add Friends</h1>
   
-  <div ng-repeat="user in fc.allUsers.list">
-    <p>{{user.username}}</p>
+  <div layout="row" layout-align="center center" ng-repeat="user in fc.allUsers.list">
+    <h2>{{user.username}}</h2>
     <button ng-click="fc.sendFriendRequest(user, fc.currentUser)">Send Friend Request</button> 
 
   </div>
@@ -18,6 +17,7 @@
   </div>
 
 </div>
+
 
 
 <div ng-include="'views/partials/nav.html'"></div>

@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" >
 
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
 
 
-    <button class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
+    <button  class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
 
     <form ng-show="showTheForm">
 
@@ -20,7 +20,7 @@
                 <th></th>
             </tr>
 
-            <tr class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList">
+            <tr layout-wrap class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList">
                 <!-- item[$index].itemName -->
                 <td>
                     <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Enter Item Name.">
@@ -110,3 +110,4 @@
 </div>
 
 <div ng-include="'views/partials/nav.html'"></div>
+

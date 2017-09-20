@@ -6,10 +6,10 @@
     <button class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
 
     <form ng-show="showTheForm">
-    
-            <label for="listName">Grocery List Name:</label>
-            <input type="text" ng-model="listName" placeholder="Name your new list.">
-            <!-- ng-model="lc.user.tables" -->
+
+        <label for="listName">Grocery List Name:</label>
+        <input type="text" ng-model="listName" placeholder="Name your new list.">
+        <!-- ng-model="lc.user.tables" -->
         <br>
         <button class='addButton' ng-click="uc.addNewItem()">Add Grocery Item</button>
         <table>
@@ -23,19 +23,19 @@
             <tr class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList">
                 <!-- item[$index].itemName -->
                 <td>
-                <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Enter Item Name.">
+                    <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Enter Item Name.">
                 </td>
 
                 <td>
-                <input type="number" ng-model="uc.newGroceryItems.newGroceryList[$index].itemQuantity" placeholder="Enter a quantity.">
+                    <input type="number" ng-model="uc.newGroceryItems.newGroceryList[$index].itemQuantity" placeholder="Enter a quantity.">
                 </td>
 
                 <td>
-                <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemNotes" placeholder="Enter any additional information.npm ">
+                    <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemNotes" placeholder="Enter any additional information.npm ">
                 </td>
 
                 <td>
-                <button class="remove" ng-click="uc.removeItemInputRow($index)">Remove</button>
+                    <button class="remove" ng-click="uc.removeItemInputRow($index)">Remove</button>
                 </td>
 
             </tr>
@@ -50,39 +50,59 @@
 
             <div class="userListHeaders">
                 <h4>{{list.listName}}</h4>
-                <button class='addButton' ng-click="showTheList[item[$index]] = !showTheList[item[$index]]; editTheList[item[$index]]=false ">See List
+                <button class='addButton' ng-click="showTheList[item[$index]] = !showTheList[item[$index]]; editTheList[item[$index]]=false ">
+                    See List
                 </button>
-                <button class='editButton' ng-click="editTheList[item[$index]] = ! editTheList[item[$index]]; showTheList[item[$index]] = false">Edit List
+                <button class='editButton' ng-click="editTheList[item[$index]] = ! editTheList[item[$index]]; showTheList[item[$index]] = false">
+                    Edit List
                 <button class= 'remove' ng-click = "uc.deleteList(list._id)">Delete List</button>
                 </button>
             </div>
 
-            <div ng-repeat="item in list.newGroceryList" ng-show="showTheList[item[$index]]">
+            <table ng-show="showTheList[item[$index]]">
+                <tr>
+                    <th>Grocery Item</th>
+                    <th>Quantity</th>
+                    <th>Notes</th>
+                    <th>Obtained</th>
+                </tr>
+                <tr ng-repeat="item in list.newGroceryList">
 
-                <p>Item Name: {{item.itemName}} {{$index}}
-                    <br> Quantity: {{item.itemQuantity}}
-                    <br> Notes: {{item.itemNotes}} Item Status: {{item.itemStatus}}
-                    <input type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus" ng-checked="{{item.itemStatus}} === true">
-                </p>
-
-            </div>
-            <div ng-show="editTheList[item[$index]]">
-                <div ng-repeat="item in list.newGroceryList">
-                    <label for="item">Grocery Item: {{item.itemName}}</label>
-                    <input type="text" ng-model='item.itemName'>
-                    <!-- ng-model="uc.editGroceryList[$index].itemName"> -->
-
-                    <label for="quantity">Quantity:</label>
+                    <td>{{item.itemName}}</td>
+                    <td> {{item.itemQuantity}}</td>
+                    <td>{{item.itemNotes}}</td>
+                    <td>
+                        <input type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus" ng-checked="{{item.itemStatus}} === true">
+                    </td>
+                </tr>
+            </table>
+            <table ng-show="editTheList[item[$index]]">
+                <tr>
+                    <th>Grocery Item</th>
+                    <th>Quantity</th>
+                    <th>Notes</th>
+                
+                </tr>
+                <tr ng-repeat="item in list.newGroceryList">
+                   
+                    <td>
+                        <input type="text" ng-model='item.itemName'>
+                    </td>
+                
+                    <td>
                     <input type="number" ng-model="item.itemQuantity">
+                    </td>
 
-                    <label for="notes">Notes:</label>
+                   <td>
                     <input type="text" ng-model="item.itemNotes">
+                   </td>
+                   
+                </tr>
 
                     <!-- this button is a stretch goal -->
                     <!-- <button class="remove" ng-click="uc.removeItem(list,$index)">Remove</button> -->
-                </div>
-                <button ng-click="uc.updateList(list)">Update List</button>
-            </div>
+            </table>
+            <button ng-click="uc.updateList(list)">Update List</button>
         </div>
     </div>
 

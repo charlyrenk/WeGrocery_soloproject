@@ -106,7 +106,7 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         $http.delete('/grocery/' + listId).then(function (response) {
             console.log('service delete response:', response);
             self.getLists();
-            location.reload();
+            
         });
     }
 

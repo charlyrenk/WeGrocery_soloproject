@@ -25,6 +25,6 @@ myApp.controller('UserController', ['UserService', 'ListService', function(UserS
 
   this.buttonFunction = function(){
     console.log('Button test');
-    debugger;
+  
   }
 }]);

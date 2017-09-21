@@ -39,7 +39,7 @@ myApp.service('FriendsService', ['$http', '$location', 'UserService', function (
     }
 
     self.sendFriendRequest = function (userToAdd, currentUser) {
-        alert('Friend Request Sent!')
+        
         currentUser.friendRequestStatus = false;
         
         console.log("friend request sent to:", userToAdd)

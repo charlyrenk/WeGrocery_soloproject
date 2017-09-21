@@ -1,17 +1,17 @@
 <div class="container" flex layout-fill>
-<h1>Friends' Lists</h1>
+<h4>Friends' Lists</h4>
 
 
 <div ng-repeat="friend in dc.userObject.friendsList">
     <div >{{friend.userName}}
-        <button ng-click="dc.getThisFriendsLists(friend)">View Lists</button>
+        <md-button ng-click="dc.getThisFriendsLists(friend)">View Lists</md-button>
     </div>
 
 </div>
 <div ng-repeat="list in dc.thisFriendsList.list">
     <div class="userListHeaders">
         <h4>{{list.listName}}</h4>
-        <button class='addButton' ng-click="showTheList[item[$index]] = !showTheList[item[$index]]">See List</button>
+        <md-button class='addButton' ng-click="showTheList[item[$index]] = !showTheList[item[$index]]">See List</md-button>
     </div>
     <table ng-show="showTheList[item[$index]]">
         <tr>

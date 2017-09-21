@@ -1,5 +1,5 @@
 @media (max-width: 768px) {
-  button {
+  .md-button {
     padding:2px 4px;
     font-size:80%;
     line-height: 1;

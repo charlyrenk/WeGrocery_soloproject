@@ -3,7 +3,7 @@
 
 
     <div ng-repeat="friend in dc.userObject.friendsList">
-        <div>{{friend.userName}}
+        <div class= "white">{{friend.userName}}
             <md-button ng-click="dc.getThisFriendsLists(friend)">View Lists</md-button>
         </div>
 
@@ -14,7 +14,7 @@
             <md-button class='addButton' ng-click="showTheList[item[$index]] = !showTheList[item[$index]]">See List</md-button>
         </div>
         <table ng-show="showTheList[item[$index]]">
-            <tr>
+            <tr class="white">
                 <th>Grocery Item</th>
                 <th>Quantity</th>
                 <th>Notes</th>
@@ -22,16 +22,16 @@
             </tr>
             <tr ng-repeat="item in list.newGroceryList">
 
-                <td>{{item.itemName}}</td>
-                <td> {{item.itemQuantity}}</td>
-                <td>{{item.itemNotes}}</td>
+                <td class="white">{{item.itemName}}</td>
+                <td class="white">{{item.itemQuantity}}</td>
+                <td class="white">{{item.itemNotes}}</td>
                 <td><input type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus"
                         ng-checked="{{item.itemStatus}} === true"></td>
             </tr>
         </table>
         <br>
-
     </div>
+    
     <br>
 </div>
 

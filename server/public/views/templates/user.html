@@ -1,19 +1,22 @@
 <div class="container" flex layout-fill>
 
+
     <h4 id="welcome" class="lead">Welcome back, {{uc.userObject.userName}}!</h4>
 
 
-    <md-button ng-click="showTheForm = !showTheForm; uc.buttonFunction();">Create New Grocery List</md-button>
+    <md-button class="w3-blue" ng-click="showTheForm = !showTheForm; uc.buttonFunction();">Create New Grocery List</md-button>
+    <md-button ng-click="uc.userService.logout()">Log Out</md-button>
 
     <form ng-show="showTheForm">
 
-        <label for="listName">Grocery List Name:</label>
-        <input type="text" ng-model="listName" placeholder="Name your new list.">
-        <!-- ng-model="lc.user.tables" -->
-        <br>
+
+        <md-input-container>
+            <label for="listName">Grocery List Name:</label>
+            <input type="text" ng-model="listName" placeholder="Name your new list.">
+        </md-input-container>
         <md-button class='addButton' ng-click="uc.addNewItem()">Add Grocery Item</md-button>
         <table>
-            <tr>
+            <tr class="white">
                 <th>Grocery Item</th>
                 <th>Quantity</th>
                 <th>Notes</th>
@@ -23,19 +26,27 @@
             <tr layout-wrap class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList">
                 <!-- item[$index].itemName -->
                 <td>
-                    <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Enter Item Name.">
+                    <md-input-container>
+                        <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Item">
+                    </md-input-container>
                 </td>
 
                 <td>
-                    <input type="number" ng-model="uc.newGroceryItems.newGroceryList[$index].itemQuantity" placeholder="Enter a quantity.">
+                    <md-input-container>
+                        <input type="number" ng-model="uc.newGroceryItems.newGroceryList[$index].itemQuantity" placeholder="Quantity">
+                    </md-input-container>
                 </td>
 
                 <td>
-                    <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemNotes" placeholder="Enter any additional information.npm ">
+                    <md-input-container>
+                        <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemNotes" placeholder="Notes">
+                    </md-input-container>
                 </td>
-
+                <br>
                 <td>
-                    <md-button class="remove"  ng-click="uc.removeItemInputRow($index)">Remove</md-button>
+
+                    <button class="w3-button w3-tiny w3-red" ng-click="uc.removeItemInputRow($index)">X</button>
+
                 </td>
 
             </tr>
@@ -44,7 +55,7 @@
         <md-button type="button" ng-click="showTheForm = false">Cancel</md-button>
     </form>
 
-    <div  id="userListContainer">
+    <div id="userListContainer">
         <h4>Your Lists</h4>
         <div class="userLists" ng-repeat="list in uc.existingGroceryLists.list">
 
@@ -56,11 +67,11 @@
                 <md-button class='editButton' ng-click="editTheList[item[$index]] = ! editTheList[item[$index]]; showTheList[item[$index]] = false">
                     Edit List
                 </md-button>
-                <md-button class= 'remove' ng-click = "uc.deleteList(list._id)">Delete List</md-button>
+                <md-button class='remove' ng-click="uc.deleteList(list._id)">Delete List</md-button>
             </div>
 
             <table ng-show="showTheList[item[$index]]">
-                <tr>
+                <tr class="white">
                     <th>Grocery Item</th>
                     <th>Quantity</th>
                     <th>Notes</th>
@@ -68,9 +79,9 @@
                 </tr>
                 <tr ng-repeat="item in list.newGroceryList">
 
-                    <td>{{item.itemName}}</td>
-                    <td> {{item.itemQuantity}}</td>
-                    <td>{{item.itemNotes}}</td>
+                    <td class="white">{{item.itemName}}</td>
+                    <td class="white"> {{item.itemQuantity}}</td>
+                    <td class="white">{{item.itemNotes}}</td>
                     <td>
                         <input type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus" ng-checked="{{item.itemStatus}} === true">
                     </td>
@@ -78,38 +89,43 @@
             </table>
             <br>
             <table ng-show="editTheList[item[$index]]">
-                <tr>
+                <tr class="white">
                     <th>Grocery Item</th>
                     <th>Quantity</th>
                     <th>Notes</th>
-                
+
                 </tr>
                 <tr ng-repeat="item in list.newGroceryList">
-                   
+
                     <td>
-                        <input type="text" ng-model='item.itemName'>
-                    </td>
-                
-                    <td>
-                    <input type="number" ng-model="item.itemQuantity">
+                        <md-input-container>
+                            <input type="text" ng-model='item.itemName'>
+                        </md-input-container>
                     </td>
 
-                   <td>
-                    <input type="text" ng-model="item.itemNotes">
-                   </td>
-                   
+                    <td>
+                        <md-input-container>
+                            <input type="number" ng-model="item.itemQuantity">
+                        </md-input-container>
+                    </td>
+
+                    <td>
+                        <md-input-container>
+                            <input type="text" ng-model="item.itemNotes">
+                        </md-input-container>
+                    </td>
+
                 </tr>
                 <md-button ng-show="editTheList[item[$index]]" ng-click="uc.updateList(list)">Update List</md-button>
 
-                    <!-- this button is a stretch goal -->
-                    <!-- <button class="remove" ng-click="uc.removeItem(list,$index)">Remove</button> -->
+                <!-- this button is a stretch goal -->
+                <!-- <button class="remove" ng-click="uc.removeItem(list,$index)">Remove</button> -->
             </table>
             <br>
         </div>
     </div>
+
 </div>
 <br>
 
-<div id = "footer" ng-include="'views/partials/nav.html'"></div>
-
-
+<div id="footer" ng-include="'views/partials/nav.html'"></div>

@@ -1,22 +1,18 @@
 <div class="container" flex layout-fill >
-  <h1 layout="row" layout-align="center center">Add Friends</h1>
-  
-  <div layout="row" layout-align="center center" ng-repeat="user in fc.allUsers.list">
-    <h2>{{user.username}}</h2>
-    <button ng-click="fc.sendFriendRequest(user, fc.currentUser)">Send Friend Request</button> 
-
+  <h4 layout="column" layout-align="start start">Add Friends</h4>
+  <div layout="column" layout-align="start start" ng-repeat="user in fc.allUsers.list">
+    <p>{{user.username}}
+    <md-button ng-click="fc.sendFriendRequest(user, fc.currentUser)">Send Friend Request</md-button> 
+    </p>
   </div>
-  <h1>All requests</h1>
+  <h4 layout="column" layout-align="start start">All requests</h4>
   <div ng-repeat="request in fc.allRequests.list">
-    <div ng-repeat="user in request" ng-if="user.friendRequestStatus === false">
-      <p>{{user.userName}}</p>
-      <button ng-click= "fc.acceptFriendRequest(user, fc.currentUser); user.friendRequestStatus = true">Accept Request</button>
+    <div layout="column" layout-align="start start" ng-repeat="user in request" ng-if="user.friendRequestStatus === false">
+      <p>{{user.userName}}
+      <md-button ng-click= "fc.acceptFriendRequest(user, fc.currentUser); user.friendRequestStatus = true">Accept Request</md-button>
+      </p>
     </div>
-
-
   </div>
-
-
 </div>
 <div id = "footer" ng-include="'views/partials/nav.html'"></div>
 

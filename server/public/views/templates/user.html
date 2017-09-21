@@ -4,8 +4,8 @@
     <h4 id="welcome" class="lead">Welcome back, {{uc.userObject.userName}}!</h4>
 
 
-    <md-button class="w3-blue" ng-click="showTheForm = !showTheForm; uc.buttonFunction();">Create New Grocery List</md-button>
-    <md-button ng-click="uc.userService.logout()">Log Out</md-button>
+    <md-button class='completeButton' ng-click="showTheForm = !showTheForm; uc.buttonFunction();">Create New Grocery List</md-button>
+    <md-button class='completeButton' ng-click="uc.userService.logout()">Log Out</md-button>
 
     <form ng-show="showTheForm">
 
@@ -14,7 +14,10 @@
             <label for="listName">Grocery List Name:</label>
             <input type="text" ng-model="listName" placeholder="Name your new list.">
         </md-input-container>
-        <md-button class='addButton' ng-click="uc.addNewItem()">Add Grocery Item</md-button>
+        <md-button class='completeButton' ng-click="uc.addNewItem()">Add Grocery Item</md-button>
+      
+        
+        
         <table>
             <tr class="white">
                 <th>Grocery Item</th>
@@ -25,6 +28,7 @@
 
             <tr layout-wrap class="list-inputs" ng-repeat="item in uc.newGroceryItems.newGroceryList">
                 <!-- item[$index].itemName -->
+                
                 <td>
                     <md-input-container>
                         <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Item">
@@ -51,8 +55,9 @@
 
             </tr>
         </table>
-        <md-button ng-click="uc.sendNewList(uc.newGroceryItems.newGroceryList, listName, uc.userObject)">Complete New List</md-button>
-        <md-button type="button" ng-click="showTheForm = false">Cancel</md-button>
+        <div layout="column" layout-align="start stretch" >
+        <md-button class='completeButton' ng-click="uc.sendNewList(uc.newGroceryItems.newGroceryList, listName, uc.userObject)">Complete New List</md-button>
+        </div>
     </form>
 
     <div id="userListContainer">

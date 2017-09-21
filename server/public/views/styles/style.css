@@ -161,3 +161,12 @@ h4{
    
 } */
 
+header{
+  /* width:100%;
+  position:fixed;
+  top:0px; */
+}
+.completeButton{
+  border: solid white;
+  border-width: 1px;
+}

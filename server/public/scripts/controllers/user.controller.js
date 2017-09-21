@@ -22,4 +22,9 @@ myApp.controller('UserController', ['UserService', 'ListService', function(UserS
 
   //functions on page load
   ListService.getLists();
+
+  this.buttonFunction = function(){
+    console.log('Button test');
+    debugger;
+  }
 }]);

@@ -4,8 +4,8 @@
         <title>Solo Project</title>
 
        
-        <link rel="stylesheet" href="/vendors/normalize.css" />
-        <link rel="stylesheet" href="/vendors/skeleton.css" />
+       <link rel="stylesheet" href="/vendors/normalize.css" />
+        <link rel="stylesheet" href="/vendors/skeleton.css" /> 
       
         <!-- Angular and Angular-Route -->
         <script src="vendors/angular.min.js" charset="utf-8"></script>
@@ -17,6 +17,8 @@
         <script src="vendors/angular-aria.min.js" charset="utf-8"></script>
         <script src="vendors/angular-messages.min.js" charset="utf-8"></script>
         <script src="vendors/angular-material.min.js" charset="utf-8"></script>
+
+        <script src="vendors/angular-touch.min.js" charset="utf-8"></script>
 
 
 <!-- 
@@ -38,9 +40,10 @@
     </head>
 
     <body ng-app="myApp">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <header ng-include="'/views/partials/header.html'"></header>
 
-      <main ng-view layout-fill></main>
+      <main ng-view></main>
     
 
     </body>

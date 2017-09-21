@@ -1,9 +1,9 @@
 <div class="container" flex layout-fill>
 
-    <h1 id="welcome" class="lead">Welcome back, {{uc.userObject.userName}}!</h1>
+    <h3 id="welcome" class="lead">Welcome back, {{uc.userObject.userName}}!</h3>
 
 
-    <button  class="btn btn-default" ng-click="showTheForm = !showTheForm">Create New Grocery List</button>
+    <md-button ng-click="showTheForm = !showTheForm; uc.buttonFunction();">Create New Grocery List</md-button>
 
     <form ng-show="showTheForm">
 

@@ -25,7 +25,7 @@
                 <td class="white">{{item.itemName}}</td>
                 <td class="white">{{item.itemQuantity}}</td>
                 <td class="white">{{item.itemNotes}}</td>
-                <td><input type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus"
+                <td><input type="checkbox" ng-change='dc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus"
                         ng-checked="{{item.itemStatus}} === true"></td>
             </tr>
         </table>

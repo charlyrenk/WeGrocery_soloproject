@@ -2,7 +2,7 @@
   <div>
     <h4>Add Friends</h4>
     <ul ng-repeat="user in fc.allUsers.list" id="popupContainer" ng-cloak>
-      <li>{{user.username}}
+      <li class="white">{{user.username}}
         <br>
         <md-button class='completeButton' ng-click="fc.sendFriendRequest(user, fc.currentUser); fc.showAlert($event)">Send Friend Request</md-button>
       </li>
@@ -13,7 +13,7 @@
     <h4>All requests</h4>
     <div ng-repeat="request in fc.allRequests.list">
       <ul ng-repeat="user in request" ng-if="user.friendRequestStatus === false">
-        <li>{{user.userName}}
+        <li class="white">{{user.userName}}
           <br>
           <md-button class='completeButton' ng-click="fc.acceptFriendRequest(user, fc.currentUser); user.friendRequestStatus = true">Accept Request</md-button>
         </li>

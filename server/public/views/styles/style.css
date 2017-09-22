@@ -175,3 +175,7 @@ header{
   border: solid white;
   border-width: 1px;
 }
+.md-button.md-small {
+  min-width: 1%;
+  min-height: 1%;
+}

@@ -14,6 +14,10 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         console.log('addNewItem button clicked.')
         self.newGroceryItems.newGroceryList.push({})
     }
+    self.addItemToExistingList = function (index) {
+        console.log('addItemToExistingList button clicked!')
+        self.existingGroceryLists.list[index].newGroceryList.push({})
+    }
 
     //removes selected input field
     self.removeItemInputRow = function (index) {
@@ -21,16 +25,10 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
 
         self.newGroceryItems.newGroceryList.splice(index, 1);
 
-        for (var i = index + 1; i < self.newGroceryItems.newGroceryList.length; i++) {
-            console.log('if working', self.newGroceryItems.newGroceryList)
-            var index = i - 1;
-
-            self.newGroceryItems.newGroceryList.splice(index, {
-                index: self.newGroceryItems.newGroceryList[index]
-
-            })
-        }
-
+    }
+    self.removeEditRow = function (list, index){
+        console.log('removeEditRow button clicked!')
+        list.newGroceryList.splice(index, 1)
     }
 
     //sends new grocery list
@@ -119,7 +117,6 @@ myApp.service('ListService', ['$http', '$location', 'UserService', function ($ht
         $http.put('/grocery', data).then(function (response) {
             console.log('post response', response);
             self.getLists();
-            location.reload();
         });
     }
     //this function is a stretch goal

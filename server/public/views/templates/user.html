@@ -50,7 +50,7 @@
                 <br>
                 <td>
 
-                    <button class="w3-button w3-tiny w3-red" ng-click="uc.removeItemInputRow($index)">X</button>
+                    <md-button class="md-small w3-red" ng-click="uc.removeItemInputRow($index)">X</md-button>
 
                 </td>
 
@@ -99,6 +99,7 @@
                     <th>Grocery Item</th>
                     <th>Quantity</th>
                     <th>Notes</th>
+                    <th></th>
 
                 </tr>
                 <tr ng-repeat="item in list.newGroceryList">
@@ -120,10 +121,14 @@
                             <input type="text" ng-model="item.itemNotes">
                         </md-input-container>
                     </td>
+                    <td>
+                        <md-button class="md-small w3-red" ng-click="uc.removeEditRow(list,$index)">X</md-button>
+                    </td>
 
                 </tr>
-                <div layout="column" layout-align="center stretch">
+                <div layout="row" layout-align="center stretch">
                 <md-button class="completeButton" ng-show="editTheList[item[$index]]" ng-click="uc.updateList(list)">Update List</md-button>
+                <md-button class="completeButton" ng-show="editTheList[item[$index]]" ng-click="uc.addItemToExistingList($index)">Add item</md-button>
                 </div>
 
                 <!-- this button is a stretch goal -->
@@ -132,8 +137,6 @@
             <br>
         </div>
     </div>
-
-
     
 </div>
 <br>

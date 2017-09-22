@@ -13,7 +13,7 @@
 
         <md-input-container>
             <label for="listName">Grocery List Name:</label>
-            <input type="text" ng-model="listName" placeholder="Name your new list.">
+            <input aria-label="Grocery-list-name" type="text" ng-model="listName" placeholder="Name your new list.">
         </md-input-container>
         <md-button class='completeButton' ng-click="uc.addNewItem()">Add Grocery Item</md-button>
       
@@ -32,19 +32,19 @@
                 
                 <td>
                     <md-input-container>
-                        <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Item">
+                        <input aria-label="itemName" type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemName" placeholder="Item">
                     </md-input-container>
                 </td>
 
                 <td>
                     <md-input-container>
-                        <input type="number" ng-model="uc.newGroceryItems.newGroceryList[$index].itemQuantity" placeholder="Quantity">
+                        <input type="number" aria-label="itemQuantity" ng-model="uc.newGroceryItems.newGroceryList[$index].itemQuantity" placeholder="Quantity">
                     </md-input-container>
                 </td>
 
                 <td>
                     <md-input-container>
-                        <input type="text" ng-model="uc.newGroceryItems.newGroceryList[$index].itemNotes" placeholder="Notes">
+                        <input type="text" aria-label="itemNotes" ng-model="uc.newGroceryItems.newGroceryList[$index].itemNotes" placeholder="Notes">
                     </md-input-container>
                 </td>
                 <br>
@@ -89,7 +89,7 @@
                     <td class="white"> {{item.itemQuantity}}</td>
                     <td class="white">{{item.itemNotes}}</td>
                     <td>
-                        <input type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus" ng-checked="{{item.itemStatus}} === true">
+                        <input aria-label = "checkbox" type="checkbox" ng-change='uc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus" ng-checked="item.itemStatus === true">
                     </td>
                 </tr>
             </table>
@@ -106,19 +106,19 @@
 
                     <td>
                         <md-input-container>
-                            <input type="text" ng-model='item.itemName'>
+                            <input aria-label = "editItemName" type="text" ng-model='item.itemName'>
                         </md-input-container>
                     </td>
 
                     <td>
                         <md-input-container>
-                            <input type="number" ng-model="item.itemQuantity">
+                            <input aria-label = "editItemQuantity" type="number" ng-model="item.itemQuantity">
                         </md-input-container>
                     </td>
 
                     <td>
                         <md-input-container>
-                            <input type="text" ng-model="item.itemNotes">
+                            <input aria-label = "editItemNotes" type="text" ng-model="item.itemNotes">
                         </md-input-container>
                     </td>
                     <td>

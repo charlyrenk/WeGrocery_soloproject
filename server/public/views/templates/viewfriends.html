@@ -1,12 +1,9 @@
 <div class="container" flex layout-fill>
     <h4>Friends' Lists</h4>
-
-
     <div ng-repeat="friend in dc.userObject.friendsList">
-        <div class= "white">{{friend.userName}}
+        <div class="white">{{friend.userName}}
             <md-button ng-click="dc.getThisFriendsLists(friend)">View Lists</md-button>
         </div>
-
     </div>
     <div ng-repeat="list in dc.thisFriendsList.list">
         <div class="userListHeaders">
@@ -25,14 +22,14 @@
                 <td class="white">{{item.itemName}}</td>
                 <td class="white">{{item.itemQuantity}}</td>
                 <td class="white">{{item.itemNotes}}</td>
-                <td><input type="checkbox" ng-change='dc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus"
-                        ng-checked="{{item.itemStatus}} === true"></td>
+                <td>
+                    <input type="checkbox" ng-change='dc.changeItemStatus(list, item, item.itemStatus)' ng-model="item.itemStatus" ng-checked="{{item.itemStatus}} === true">
+                </td>
             </tr>
         </table>
         <br>
     </div>
-    
     <br>
 </div>
 
-    <div id="footer" ng-include="'views/partials/nav.html'"></div>
+<div id="footer" ng-include="'views/partials/nav.html'"></div>

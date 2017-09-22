@@ -33,26 +33,22 @@ router.post('/', function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    // if(req.isAuthenticated()) {
-    // send back user object from database
-    // console.log('logged in', req.user);
-    //user_id: req.user.user_id
-    Grocery.find({}, function (err, data) {
-        if (err) {
-            console.log('find error: ', err);
-            res.sendStatus(500);
-        } else {
-            console.log('found data: ', data);
-            res.send(data);
-        }
-    });
-    //   } else {
-    //     // failure best handled on the server. do redirect here.
-    //     console.log('not logged in');
-    //     // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
-    //     res.send(false);
-    //   }
+    if (req.isAuthenticated()) {
+       
+        let userId = req.user._id
+
+        Grocery.find({user_id: userId }, function (err, data) {
+            if (err) {
+                console.log('find error: ', err);
+                res.sendStatus(500);
+            } else {
+                console.log('found data: ', data);
+                res.send(data);
+            }
+        });
+    }
 })
+
 
 router.put('/', function (req, res) {
     var id = req.body.objectId

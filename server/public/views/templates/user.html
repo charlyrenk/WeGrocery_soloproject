@@ -122,7 +122,9 @@
                     </td>
 
                 </tr>
-                <md-button ng-show="editTheList[item[$index]]" ng-click="uc.updateList(list)">Update List</md-button>
+                <div layout="column" layout-align="center stretch">
+                <md-button class="completeButton" ng-show="editTheList[item[$index]]" ng-click="uc.updateList(list)">Update List</md-button>
+                </div>
 
                 <!-- this button is a stretch goal -->
                 <!-- <button class="remove" ng-click="uc.removeItem(list,$index)">Remove</button> -->

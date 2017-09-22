@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" layout="column" layout-align="center center">
     <h1 class="lead">Login</h1>
     <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
         <form ng-submit="lc.login()">
-            <div>
+            <div layout="column" layout-align="center center">
                 <md-input-container>
                     <label for="username">Username:</label>
                     <input type="text" ng-model="lc.user.username" />
@@ -14,8 +14,8 @@
                     <input type="password" ng-model="lc.user.password" />
                 </md-input-container>
             </div>
-            <div>
-                <input class="btn btn-default" type="submit" name="submit" value="Log In" />
+            <div layout="column" layout-align="center stretch">
+                <input class= "w3-blue" class="btn btn-default" type="submit" name="submit" value="Log In" />
                 <a href="#register">Register</a>
             </div>
         </form>

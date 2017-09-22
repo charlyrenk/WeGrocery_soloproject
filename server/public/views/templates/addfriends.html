@@ -1,17 +1,23 @@
-<div class="container" flex layout-fill>
-  <h4 layout="column" layout-align="start start">Add Friends</h4>
-  <ul layout="column" layout-align="start start" ng-repeat="user in fc.allUsers.list" id="popupContainer" ng-cloak>
-    <li>{{user.username}}
-    
-    <md-button ng-click="fc.sendFriendRequest(user, fc.currentUser); fc.showAlert($event)">Send Friend Request</md-button>
-    </li>
-  </ul>
-  <h4 layout="column" layout-align="start start">All requests</h4>
-  <div ng-repeat="request in fc.allRequests.list">
-    <div layout="column" layout-align="start start" ng-repeat="user in request" ng-if="user.friendRequestStatus === false">
-      <p>{{user.userName}}
-        <md-button ng-click="fc.acceptFriendRequest(user, fc.currentUser); user.friendRequestStatus = true">Accept Request</md-button>
-      </p>
+<div class="container" flex layout-fill layout="row" layout-align="space-around start">
+  <div>
+    <h4>Add Friends</h4>
+    <ul ng-repeat="user in fc.allUsers.list" id="popupContainer" ng-cloak>
+      <li>{{user.username}}
+        <br>
+        <md-button class='completeButton' ng-click="fc.sendFriendRequest(user, fc.currentUser); fc.showAlert($event)">Send Friend Request</md-button>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h4>All requests</h4>
+    <div ng-repeat="request in fc.allRequests.list">
+      <ul ng-repeat="user in request" ng-if="user.friendRequestStatus === false">
+        <li>{{user.userName}}
+          <br>
+          <md-button class='completeButton' ng-click="fc.acceptFriendRequest(user, fc.currentUser); user.friendRequestStatus = true">Accept Request</md-button>
+        </li>
+      </ul>
     </div>
   </div>
   <br>

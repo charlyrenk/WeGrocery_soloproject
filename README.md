@@ -1,4 +1,4 @@
-# Name of Project
+# WeGrocery
 My solo project was an application called WeGrocery. WeGrocery is a full-stack
 web application to help a users’ create, share, and co-edit grocery lists. For
 grocery-list editing, users will have the option to mark whether or not they have
@@ -53,6 +53,7 @@ Features that you would like to add at some point in the future.
 
 
 ## Deployment
+Application is usable from this Heroku link:
 https://wegrocery.herokuapp.com
 
 ## Authors
